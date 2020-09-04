@@ -8,6 +8,6 @@ import javax.swing.*;
  * @since 2020-September-03
  */
 
-public class GameView extends JFrame {
+public class GameView extends JPanel {
 
 }
