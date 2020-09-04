@@ -4,8 +4,6 @@ import Minesweeper.Controller.MenueController;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 
@@ -16,12 +14,17 @@ import java.awt.event.KeyEvent;
  */
 
 public class MenuView extends JPanel {
-    private MainFrame mainFrame;
-    private JPanel buttonPanel, titlePanel, sizePanel, sizeYPanel, sizeXPanel;
-    private JButton playButton, exitButton;
-    private DefaultListCellRenderer listCellRenderer;
-    private JComboBox<String> sizeSelect;
-    private JTextField ySizeSelect, xSizeSelect;
+    private final MainFrame mainFrame;
+    private final JPanel buttonPanel;
+    private final JPanel titlePanel;
+    private final JPanel sizePanel;
+    private final JPanel sizeYPanel;
+    private final JPanel sizeXPanel;
+    private final JButton playButton;
+    private final JButton exitButton;
+    private final JComboBox<String> sizeSelect;
+    private final JTextField ySizeSelect;
+    private final JTextField xSizeSelect;
 
     public MenuView(MainFrame mainFrame){
         this.mainFrame = mainFrame;
@@ -33,7 +36,7 @@ public class MenuView extends JPanel {
         sizeXPanel = new JPanel();
         playButton = new JButton("Play");
         exitButton = new JButton("Exit");
-        listCellRenderer = new DefaultListCellRenderer();
+        DefaultListCellRenderer listCellRenderer = new DefaultListCellRenderer();
         listCellRenderer.setHorizontalAlignment(DefaultListCellRenderer.CENTER);
         String[] sizes = new String[]{"9x9 Easy", "16x16 Hard", "30x16 Hard", "Custom"};
         sizeSelect = new JComboBox<>(sizes);
@@ -68,7 +71,7 @@ public class MenuView extends JPanel {
         sizeSelect.setFont(new Font("Arial", Font.PLAIN, 30));
         exitButton.setFont(new Font("Arial", Font.PLAIN, 30));
 
-        playButton.addActionListener(e -> MenueController.playButtonController(getYWide(), getXWide()));
+        playButton.addActionListener(e -> MenueController.playButtonController(mainFrame, getYWide(), getXWide()));
         exitButton.addActionListener(e -> MenueController.exitButtonController());
         sizeSelect.addActionListener(e -> {
             if (sizeSelect.getSelectedIndex() == 3){
@@ -112,19 +115,15 @@ public class MenuView extends JPanel {
                 ySizeSelect.addKeyListener(new KeyAdapter() {
                     @Override
                     public void keyPressed(KeyEvent e) {
-                        String value = ySizeSelect.getText();
-                        int l = value.length();
                         ySizeSelect.setEditable(e.getKeyChar() >= '0' && e.getKeyChar() <= '9' || KeyEvent.VK_BACK_SPACE == e.getKeyCode());
-                    };
+                    }
                 });
 
                 xSizeSelect.addKeyListener(new KeyAdapter() {
                     @Override
                     public void keyPressed(KeyEvent e) {
-                        String value = xSizeSelect.getText();
-                        int l = value.length();
                         xSizeSelect.setEditable(e.getKeyChar() >= '0' && e.getKeyChar() <= '9' || KeyEvent.VK_BACK_SPACE == e.getKeyCode());
-                    };
+                    }
                 });
             } else {
                 grid.setRows(3);
@@ -138,11 +137,32 @@ public class MenuView extends JPanel {
         });
     }
 
-    private int getXWide(){
-        return 0;
+    private int getYWide(){
+        switch (sizeSelect.getSelectedIndex()){
+            case 0:
+                return 9;
+            case 1:
+            case 2:
+                return 16;
+            case 3:
+                return Integer.parseInt(ySizeSelect.getText());
+            default:
+                return 0;
+        }
     }
 
-    private int getYWide(){
-        return 0;
+    private int getXWide(){
+        switch (sizeSelect.getSelectedIndex()){
+            case 0:
+                return 9;
+            case 1:
+                return 16;
+            case 2:
+                return 30;
+            case 3:
+                return Integer.parseInt(xSizeSelect.getText());
+            default:
+                return 0;
+        }
     }
 }
