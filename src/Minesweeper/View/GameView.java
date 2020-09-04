@@ -9,5 +9,14 @@ import javax.swing.*;
  */
 
 public class GameView extends JPanel {
+    private MainFrame mainFrame;
+    private int ySize, xSize;
 
+    public GameView(MainFrame mainFrame, int ySize, int xSize){
+        this.mainFrame = mainFrame;
+        this.ySize = ySize;
+        this.xSize = xSize;
+
+
+    }
 }
