@@ -14,7 +14,7 @@ public class MainFrame extends JFrame {
      * Instantiates a new Main frame.
      */
     public MainFrame(){
-        setSize(400,500);
+        setSize(600,800);
         setLocationRelativeTo(null);
         setResizable(false);
         setTitle("Tschau Sepp");
