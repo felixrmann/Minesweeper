@@ -18,6 +18,12 @@ public class GameMap {
         backgroundMap = new char[ySize][xSize];
         visualMap = new char[ySize][xSize];
 
+        for (int y = 0; y < ySize; y++) {
+            for (int x = 0; x < xSize; x++) {
+                backgroundMap[y][x] = ' ';
+                visualMap[y][x] = ' ';
+            }
+        }
         //TODO fill backgroundMap
     }
 

@@ -12,8 +12,10 @@ import java.awt.*;
  */
 
 public class MapPrinter extends JPanel {
-    private GameMap gameMap;
-    private int ySize, xSize, pixelSize;
+    private final GameMap gameMap;
+    private final int ySize;
+    private final int xSize;
+    private int pixelSize;
 
     public MapPrinter(GameMap gameMap, int ySize, int xSize){
         this.gameMap = gameMap;
@@ -22,30 +24,28 @@ public class MapPrinter extends JPanel {
 
         pixelSize = 35;
 
+        if (ySize < 10 && xSize < 10) pixelSize = 100;
+        else if (ySize < 20 && xSize < 20) pixelSize = 60;
+
         //TODO change pixel size relative to amount (x and y)
     }
 
-    @Override
-    public Dimension getMinimumSize() {
-        return new Dimension(pixelSize * ySize, pixelSize * xSize);
-    }
+    public JPanel printMap(){
+        JPanel panel = new JPanel();
+        panel.setLayout(new GridLayout(ySize, xSize));
+        panel.setMinimumSize(new Dimension(pixelSize * ySize, pixelSize * xSize));
+        panel.setMaximumSize(new Dimension(pixelSize * ySize, pixelSize * xSize));
+        panel.setPreferredSize(new Dimension(pixelSize * ySize, pixelSize * xSize));
 
-    @Override
-    public Dimension getMaximumSize() {
-        return new Dimension(pixelSize * ySize, pixelSize * xSize);
-    }
+        for (int y = 0; y < ySize; y++) {
+            for (int x = 0; x < xSize; x++) {
+                JPanel panel1 = new JPanel();
+                panel1.setBackground(ColorController.getColor(gameMap.getPixelBackMap(y,x)));
+                //TODO fill text with amount of mines
+                panel.add(panel1);
+            }
+        }
 
-    @Override
-    public Dimension getPreferredSize() {
-        return new Dimension(pixelSize * ySize, pixelSize * xSize);
-    }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        int margin = 10;
-        Dimension dim = getSize();
-        super.paintComponent(g);
-        g.setColor(Color.BLUE);
-        g.fillRect(margin, margin, dim.width - margin * 2, dim.height - margin * 2);
+        return panel;
     }
 }

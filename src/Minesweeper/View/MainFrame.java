@@ -50,6 +50,7 @@ public class MainFrame extends JFrame {
      */
     public void setMaxSize(){
         setExtendedState(JFrame.MAXIMIZED_BOTH);
-        //TODO maybe resizable false
+        setResizable(true);
+        //TODO make a min size
     }
 }
