@@ -120,8 +120,8 @@ public class MenuView extends JPanel {
                     @Override
                     public void keyPressed(KeyEvent e) {
                         try {
-                            if (Integer.parseInt(ySizeSelect.getText()) >= 50 || Integer.parseInt(ySizeSelect.getText()) <= 0) {
-                                ySizeSelect.setText("max 50, min 1");
+                            if (Integer.parseInt(ySizeSelect.getText()) >= 40 || Integer.parseInt(ySizeSelect.getText()) <= 0) {
+                                ySizeSelect.setText("max 40, min 1");
                                 ySizeSelect.setEditable(false);
                                 ySizeSelect.setEnabled(false);
                                 java.util.Timer timer = new Timer();
@@ -144,8 +144,8 @@ public class MenuView extends JPanel {
                     @Override
                     public void keyPressed(KeyEvent e) {
                         try {
-                            if (Integer.parseInt(xSizeSelect.getText()) >= 50 || Integer.parseInt(xSizeSelect.getText()) <= 0) {
-                                xSizeSelect.setText("max 50, min 1");
+                            if (Integer.parseInt(xSizeSelect.getText()) >= 40 || Integer.parseInt(xSizeSelect.getText()) <= 0) {
+                                xSizeSelect.setText("max 40, min 1");
                                 xSizeSelect.setEditable(false);
                                 xSizeSelect.setEnabled(false);
                                 java.util.Timer timer = new Timer();

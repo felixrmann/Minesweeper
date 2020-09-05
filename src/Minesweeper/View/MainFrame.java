@@ -44,4 +44,12 @@ public class MainFrame extends JFrame {
         setSize(width, height);
         setLocationRelativeTo(null);
     }
+
+    /**
+     * Set max size.
+     */
+    public void setMaxSize(){
+        setExtendedState(JFrame.MAXIMIZED_BOTH);
+        //TODO maybe resizable false
+    }
 }

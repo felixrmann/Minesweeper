@@ -1,5 +1,6 @@
 package Minesweeper.Controller;
 
+import Minesweeper.View.GameView;
 import Minesweeper.View.MainFrame;
 
 /**
@@ -15,7 +16,8 @@ public class MenueController {
      */
 
     public static void playButtonController(MainFrame mainFrame, int yWide, int xWide){
-
+        mainFrame.setContent(new GameView(mainFrame, yWide, xWide));
+        mainFrame.setMaxSize();
     }
 
     public static void exitButtonController(){
