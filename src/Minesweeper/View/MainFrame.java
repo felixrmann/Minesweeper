@@ -17,7 +17,7 @@ public class MainFrame extends JFrame {
         setSize(600,800);
         setLocationRelativeTo(null);
         setResizable(false);
-        setTitle("Tschau Sepp");
+        setTitle("Minesweeperx");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }

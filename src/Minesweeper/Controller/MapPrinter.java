@@ -30,6 +30,13 @@ public class MapPrinter extends JPanel {
         //TODO change pixel size relative to amount (x and y)
     }
 
+    /*
+    public int getSelectedPanel(int ){
+
+    }
+
+     */
+
     public JPanel printMap(){
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(ySize, xSize));

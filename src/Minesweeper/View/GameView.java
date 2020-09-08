@@ -5,6 +5,8 @@ import Minesweeper.Model.GameMap;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 /**
  * @author Felix Mann
@@ -71,5 +73,21 @@ public class GameView extends JPanel {
         } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
             e.printStackTrace();
         }
+
+        mapPanel.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                double xPos = e.getX();
+                double yPos = e.getY();
+                switch (e.getModifiers()){
+                    case MouseEvent.BUTTON1_MASK:
+                        //TODO reveal field
+                        break;
+                    case MouseEvent.BUTTON3_MASK:
+                        //TODO mark field or questionmark field (if marked)
+                        break;
+                }
+            }
+        });
     }
 }
