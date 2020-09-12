@@ -1,5 +1,7 @@
 package Minesweeper.Controller;
 
+import Minesweeper.Model.GameMap;
+
 /**
  * @author Felix Mann
  * @version 1.0
@@ -7,5 +9,13 @@ package Minesweeper.Controller;
  */
 
 public class GameController {
+    private int bombAmount;
+    private GameMap gameMap;
 
+    public GameController(int bombAmount, GameMap gameMap){
+        this.bombAmount = bombAmount;
+        this.gameMap = gameMap;
+
+
+    }
 }

@@ -15,8 +15,8 @@ public class MenueController {
         This Class controlls the MenueButton inputs
      */
 
-    public static void playButtonController(MainFrame mainFrame, int yWide, int xWide){
-        mainFrame.setContent(new GameView(mainFrame, yWide, xWide));
+    public static void playButtonController(MainFrame mainFrame, int yWide, int xWide, int minesAmount){
+        mainFrame.setContent(new GameView(yWide, xWide, minesAmount));
         mainFrame.setMaxSize();
     }
 

@@ -20,7 +20,7 @@ public class GameMap {
 
         for (int y = 0; y < ySize; y++) {
             for (int x = 0; x < xSize; x++) {
-                backgroundMap[y][x] = ' ';
+                backgroundMap[y][x] = 'e';
                 visualMap[y][x] = ' ';
             }
         }

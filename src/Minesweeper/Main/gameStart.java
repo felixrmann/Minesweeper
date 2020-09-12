@@ -12,7 +12,7 @@ import Minesweeper.View.MainFrame;
 public class gameStart {
     public static void main(String[] args) {
         MainFrame mainFrame = new MainFrame();
-        mainFrame.setContent(new GameView(mainFrame, 9,9));
+        mainFrame.setContent(new GameView(9,9, 10));
         mainFrame.setMaxSize();
     }
 }

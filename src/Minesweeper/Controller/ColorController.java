@@ -12,11 +12,20 @@ public class ColorController {
     public static Color getColor(char color){
         switch (color){
             case ' ':
+                //leer
                 return new Color(10,10,10);
             case 'e':
-                return new Color(20,20,20);
+                //empty
+                return new Color(54, 132, 129);
             case 'm':
+                //mine
                 return new Color(255, 0,0);
+            case 'a':
+                //attention
+                return new Color(208, 190, 46);
+            case '?':
+                //is there mine?
+                return new Color(150, 226, 72);
             case '1':
             case '2':
             case '3':

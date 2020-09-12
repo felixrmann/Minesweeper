@@ -1,6 +1,7 @@
 package Minesweeper.View;
 
 import javax.swing.*;
+import java.awt.*;
 
 /**
  * The type Main frame.
@@ -17,7 +18,7 @@ public class MainFrame extends JFrame {
         setSize(600,800);
         setLocationRelativeTo(null);
         setResizable(false);
-        setTitle("Minesweeperx");
+        setTitle("Minesweeper");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
     }
@@ -51,6 +52,6 @@ public class MainFrame extends JFrame {
     public void setMaxSize(){
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setResizable(true);
-        //TODO make a min size
+        setMinimumSize(new Dimension(1400, 1000));
     }
 }
