@@ -7,13 +7,10 @@ package Minesweeper.Model;
  */
 
 public class GameMap {
-    private int ySize, xSize;
-    private char[][] backgroundMap, visualMap;
-
+    private final char[][] backgroundMap;
+    private final char[][] visualMap;
 
     public GameMap(int ySize, int xSize){
-        this.ySize = ySize;
-        this.xSize = xSize;
 
         backgroundMap = new char[ySize][xSize];
         visualMap = new char[ySize][xSize];
@@ -24,7 +21,6 @@ public class GameMap {
                 visualMap[y][x] = ' ';
             }
         }
-        //TODO fill backgroundMap
     }
 
     public void setPixelBackMap(int yPos, int xPos, char color){
@@ -41,13 +37,5 @@ public class GameMap {
 
     public char getPixelVisualMap(int yPos, int xPos){
         return visualMap[yPos][xPos];
-    }
-
-    public char[][] getBackgroundMap() {
-        return backgroundMap;
-    }
-
-    public char[][] getVisualMap() {
-        return visualMap;
     }
 }

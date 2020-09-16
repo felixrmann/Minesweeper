@@ -1,6 +1,8 @@
 package Minesweeper.Controller;
 
+import javax.swing.*;
 import java.awt.*;
+import java.net.URL;
 
 /**
  * @author Felix Mann
@@ -38,5 +40,60 @@ public class ColorController {
             default:
                 return null;
         }
+    }
+
+    public static JLabel getImagePanel(char color){
+        URL path;
+        switch (color){
+            case ' ':
+                path = ColorController.class.getResource("../img/black.png");
+                break;
+            case 'e':
+                path = ColorController.class.getResource("../img/black.png");
+                break;
+            case 'm':
+                path = ColorController.class.getResource("../img/m.png");
+                break;
+            case 'a':
+                path = ColorController.class.getResource("../img/black.png");
+                break;
+            case '?':
+                path = ColorController.class.getResource("../img/black.png");
+                break;
+            case '1':
+                path = ColorController.class.getResource("../img/1.jpg");
+                break;
+            case '2':
+                path = ColorController.class.getResource("../img/2.jpg");
+                break;
+            case '3':
+                path = ColorController.class.getResource("../img/3.jpg");
+                break;
+            case '4':
+                path = ColorController.class.getResource("../img/4.jpg");
+                break;
+            case '5':
+                path = ColorController.class.getResource("../img/black.png");
+                break;
+            case '6':
+                path = ColorController.class.getResource("../img/black.png");
+                break;
+            case '7':
+                path = ColorController.class.getResource("../img/black.png");
+                break;
+            case '8':
+                path = ColorController.class.getResource("../img/black.png");
+                break;
+            default:
+                throw new IllegalStateException("Unexpected value: " + color);
+        }
+        ImageIcon icon = new ImageIcon(path);
+        Image image = icon.getImage();
+        int size = MapPrinter.getPixelSize();
+        Image newImg = image.getScaledInstance(size, size, Image.SCALE_SMOOTH);
+        icon = new ImageIcon(newImg);
+        JLabel img = new JLabel();
+        img.setIcon(icon);
+        return img;
     }
 }

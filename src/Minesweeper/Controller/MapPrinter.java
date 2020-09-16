@@ -4,6 +4,8 @@ import Minesweeper.Model.GameMap;
 
 import javax.swing.*;
 import java.awt.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 /**
  * @author Felix Mann
@@ -37,7 +39,14 @@ public class MapPrinter extends JPanel {
         for (int y = 0; y < ySize; y++) {
             for (int x = 0; x < xSize; x++) {
                 JPanel panel1 = new JPanel();
-                panel1.setBackground(ColorController.getColor(gameMap.getPixelVisualMap(y,x)));
+                /*
+                char text = gameMap.getPixelVisualMap(y,x);
+                System.out.println(text);
+                JLabel tempLabel = ColorController.getImagePanel(text);
+                panel1.add(tempLabel);
+                 */
+                Color color = ColorController.getColor(gameMap.getPixelVisualMap(y,x));
+                panel1.setBackground(color);
                 add(panel1);
             }
         }

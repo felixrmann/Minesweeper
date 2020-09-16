@@ -8,6 +8,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  * @author Felix Mann
@@ -24,8 +26,6 @@ public class GameView extends JPanel {
     private final GameController gameController;
 
     public GameView(int ySize, int xSize, int minesAmount){
-
-        System.out.println(minesAmount);
         gameMap = new GameMap(ySize, xSize);
         mapPrinter = new MapPrinter(gameMap, ySize, xSize);
         mapPanel = new JPanel();
@@ -34,7 +34,8 @@ public class GameView extends JPanel {
         pointsPanel = new JPanel();
         menuPanel = new JPanel();
         menuButton = new JButton("Menu");
-        gameController = new GameController(minesAmount, gameMap);
+        gameController = new GameController(ySize, xSize, minesAmount, gameMap);
+        gameController.fillBackMap();
 
         init();
     }
@@ -88,13 +89,14 @@ public class GameView extends JPanel {
                     case MouseEvent.BUTTON1_MASK:
                         if (gameMap.getPixelVisualMap(yPos, xPos) == ' '){ //if visualMap is not revealed
                             if (!(gameMap.getPixelBackMap(yPos, xPos) == 'm')){
-                                gameMap.setPixelVisualMap(yPos, xPos, gameMap.getPixelBackMap(yPos, xPos));
+                                char backPixel = gameMap.getPixelBackMap(yPos,xPos);
+                                gameMap.setPixelVisualMap(yPos, xPos, backPixel);
                                 updateMap();
-                            } else {
+                            } else if (gameMap.getPixelBackMap(yPos, xPos) == 'm'){
+                                gameMap.setPixelVisualMap(yPos, xPos, 'm');
                                 updateMap();
-                                //TODO show score and finish game
+                                //finish();
                             }
-
                         }
                         break;
                     case MouseEvent.BUTTON3_MASK:
@@ -122,5 +124,16 @@ public class GameView extends JPanel {
         mapPanel.removeAll();
         mapPanel = mapPrinter.printMap();
         mapPanel.revalidate();
+    }
+
+    private void finish(){
+        java.util.Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                //TODO ins Menu oder Beenden
+                System.exit(0);
+            }
+        }, 1500);
     }
 }
